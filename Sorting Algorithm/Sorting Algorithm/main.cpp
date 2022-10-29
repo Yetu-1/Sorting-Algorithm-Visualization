@@ -90,7 +90,7 @@ public:
     {
         static int idx = 1, j = idx;
         
-        if( j > 0 && (array[j - 1] > array[j]))
+        if( j > 0 && (array[j] < array[j - 1]))
         {
             int temp;
             Clear(olc::WHITE);
@@ -101,7 +101,7 @@ public:
             j--;
         }
         else{
-            if (idx == ARRAY_SIZE)
+            if (idx == (ARRAY_SIZE - 1))
             {
                 idx = 0;
             }
