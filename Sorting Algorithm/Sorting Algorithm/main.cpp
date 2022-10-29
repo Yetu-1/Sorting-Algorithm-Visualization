@@ -31,7 +31,7 @@ public:
     }
     bool OnUserUpdate(float fElapsedTime) override {
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
-        bubble_sort(true);
+        insertion_sort();
         return true;
     }
     
@@ -65,7 +65,7 @@ public:
                     Clear(olc::WHITE);
                     int temp;
                     temp = array[j];
-                    array[j]=array[j + 1];
+                    array[j] = array[j + 1];
                     array[j + 1] = temp;
                     DrawArray();
                 }
@@ -82,6 +82,33 @@ public:
                     j = 0;
                     idx++;
                 }
+            }
+        }
+    }
+    
+    void insertion_sort()
+    {
+        static int idx = 1, j = idx;
+        
+        if( j > 0 && (array[j - 1] > array[j]))
+        {
+            int temp;
+            Clear(olc::WHITE);
+            temp = array[j];
+            array[j] = array[j - 1];
+            array[j - 1] = temp;
+            DrawArray();
+            j--;
+        }
+        else{
+            if (idx == ARRAY_SIZE)
+            {
+                idx = 0;
+            }
+            else
+            {
+                idx++;
+                j = idx;
             }
         }
     }
